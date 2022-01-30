@@ -1,14 +1,15 @@
 {
   "name": "torchlight-3-save-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A save editor for the Torchlight 3 Singleplayer version.",
   "main": "dist/index.js",
   "scripts": {
     "start": "node ./dist/index.js",
+    "clean": "del dist",
     "lint": "prettier --write ./src",
     "transpile": "tsc",
-    "clean": "del dist",
-    "build": "npm-run-all --sequential clean lint transpile",
+    "assets": "copyfiles ./assets/* ./dist",
+    "build": "npm-run-all --sequential clean lint transpile assets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
+    "copyfiles": "^2.4.1",
     "platform-folders": "^0.5.4",
     "yargs": "^17.3.1"
   }
