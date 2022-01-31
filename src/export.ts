@@ -22,7 +22,7 @@ function command(frontiersFolder) {
     const content = file.getContent(path.join(inputFolder, fileName));
     fs.writeFileSync(
       path.join(outputFolder, fileName.replace(".sav", ".json")),
-      content
+      JSON.stringify(JSON.parse(content), null, 2)
     );
   }
 }

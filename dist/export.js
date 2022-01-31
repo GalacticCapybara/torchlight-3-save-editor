@@ -17,7 +17,7 @@ function command(frontiersFolder) {
     for (var _i = 0, fileNames_1 = fileNames; _i < fileNames_1.length; _i++) {
         var fileName = fileNames_1[_i];
         var content = file_1["default"].getContent(path_1["default"].join(inputFolder, fileName));
-        fs_1["default"].writeFileSync(path_1["default"].join(outputFolder, fileName.replace(".sav", ".json")), content);
+        fs_1["default"].writeFileSync(path_1["default"].join(outputFolder, fileName.replace(".sav", ".json")), JSON.stringify(JSON.parse(content), null, 2));
     }
 }
 exports["default"] = command;
