@@ -6,7 +6,7 @@ import exportCommand from "./export";
 import importCommand from "./import";
 
 const options = yargs
-  .version("0.1.3")
+  .version("0.1.4")
   .usage(
     "Usage: torchlight-3-save-editor [command] [option]\n" +
       "\n" +
