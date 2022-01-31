@@ -1,11 +1,13 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+# changed to pushing tags https://github.com/marketplace/actions/create-tag-release
 
 name: Node.js Package
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
