@@ -7,19 +7,21 @@ function getStartindex(fileAsBuffer) {
   return fileAsBuffer.indexOf("{", jsonType, "utf-8");
 }
 
-function getEndIndex(fileAsBuffer) {
-  var lastDataVersion = fileAsBuffer.indexOf("dataVersion", 0, "utf-8");
-  while (
-    fileAsBuffer.indexOf("dataVersion", lastDataVersion + 1, "utf-8") > -1
-  ) {
-    lastDataVersion = fileAsBuffer.indexOf(
-      "dataVersion",
-      lastDataVersion + 1,
-      "utf-8"
-    );
-  }
+function calculateJumpToEnd(buffer, start) {
+  var hex = buffer
+    .slice(start, start + 3)
+    .toString("hex")
+    .match(/.{1,2}/g)
+    .reverse()
+    .join("");
+  return parseInt(hex, 16);
+}
 
-  return fileAsBuffer.indexOf("}", lastDataVersion, "utf-8") + 1;
+function getEndIndex(fileAsBuffer) {
+  const indexOfFirstBracket = getStartindex(fileAsBuffer);
+  const jumpToEnd = calculateJumpToEnd(fileAsBuffer, indexOfFirstBracket - 4);
+
+  return indexOfFirstBracket + jumpToEnd - 1;
 }
 
 function toStringifiedJson(buffer: Buffer): string {

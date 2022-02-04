@@ -18,7 +18,7 @@ function getModule(logger) {
                 throw new Error(enums_1.ErrorEnum.pathRequired);
             }
             var frontiersFolder = argv["path"];
-            var inputFolder = path_1["default"].join((0, platform_folders_1["default"])("documents"), "torchlight-3-save-editor");
+            var inputFolder = path_1["default"].join((0, platform_folders_1["default"])("documents"), "torchlight-3-save-editor/saveGame");
             var outputFolder = path_1["default"].join(frontiersFolder, fileHander_1["default"].saveGameFolder);
             var fileNames = fileHander_1["default"].listAllValidFiles(inputFolder);
             if (!fs_1["default"].existsSync(outputFolder)) {

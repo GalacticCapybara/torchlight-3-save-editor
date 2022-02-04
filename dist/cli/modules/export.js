@@ -19,7 +19,7 @@ function getModule(logger) {
             }
             var frontiersFolder = argv["path"];
             var inputFolder = path_1["default"].join(frontiersFolder, fileHander_1["default"].saveGameFolder);
-            var outputFolder = path_1["default"].join((0, platform_folders_1["default"])("documents"), "torchlight-3-save-editor");
+            var outputFolder = path_1["default"].join((0, platform_folders_1["default"])("documents"), "torchlight-3-save-editor/saveGame");
             var fileNames = fileHander_1["default"].listAllValidFiles(inputFolder);
             if (!fs_1["default"].existsSync(outputFolder)) {
                 fs_1["default"].mkdirSync(outputFolder, { recursive: true });

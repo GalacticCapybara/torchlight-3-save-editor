@@ -1,20 +1,18 @@
 import fs from "fs";
 import path from "path";
 
-import appRoot from "app-root-path";
-
 import savHandler from "../savHandler";
 
 const saveGameFolder = "Saved/SaveGames";
 
-// TODO: get JSON by jumpTo instead last dataVersion
-// /[0-9]*-QuestData\.(sav|json)/,
-// /[0-9]*-AccountQuests\.(sav|json)/,
 const validFiles = [
+  /[0-9]*-QuestData\.(sav|json)/,
+  /[0-9]*-AccountQuests\.(sav|json)/,
   /[0-9]*-CharacterData\.(sav|json)/,
   /[0-9]*-AccountWide\.(sav|json)/,
   /[0-9]*-FortInventory\.(sav|json)/,
   /[0-9]*-FortStash\.(sav|json)/,
+  /[0-9]*-SharedStash-[0-9]\.(sav|json)/,
 ];
 
 function saveFile(filePath: string, content: string | object) {

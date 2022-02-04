@@ -7,14 +7,14 @@ var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var savHandler_1 = __importDefault(require("../savHandler"));
 var saveGameFolder = "Saved/SaveGames";
-// TODO: get JSON by jumpTo instead last dataVersion
-// /[0-9]*-QuestData\.(sav|json)/,
-// /[0-9]*-AccountQuests\.(sav|json)/,
 var validFiles = [
+    /[0-9]*-QuestData\.(sav|json)/,
+    /[0-9]*-AccountQuests\.(sav|json)/,
     /[0-9]*-CharacterData\.(sav|json)/,
     /[0-9]*-AccountWide\.(sav|json)/,
     /[0-9]*-FortInventory\.(sav|json)/,
     /[0-9]*-FortStash\.(sav|json)/,
+    /[0-9]*-SharedStash-[0-9]\.(sav|json)/,
 ];
 function saveFile(filePath, content) {
     if (typeof content === "object") {

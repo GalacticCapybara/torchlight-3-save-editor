@@ -20,7 +20,7 @@ function getModule(logger: LoggerInterface = defaultLogger) {
       const inputFolder = path.join(frontiersFolder, fileHander.saveGameFolder);
       const outputFolder = path.join(
         getPath("documents"),
-        "torchlight-3-save-editor"
+        "torchlight-3-save-editor/saveGame"
       );
 
       const fileNames = fileHander.listAllValidFiles(inputFolder);
