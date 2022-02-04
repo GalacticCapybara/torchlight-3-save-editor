@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "rootDir": "./src",
     "outDir": "./dist"
-  }
+  },
+  "exclude": ["./jest.config.ts"]
 }
