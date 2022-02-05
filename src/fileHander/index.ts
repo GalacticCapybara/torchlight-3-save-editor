@@ -48,10 +48,27 @@ function listAllValidFiles(dirPath) {
   return validFileList;
 }
 
+function getFromStaticContent(dirPath, assetsFile): string {
+  const fileList = fs.readdirSync(dirPath);
+
+  const validFileList = fileList.filter((fileName) =>
+    fileName.match(/[0-9]*-StaticContent\.sav/)
+  );
+
+  if (validFileList.length === 0) {
+    throw new Error("no staticContent file");
+  }
+
+  const buffer = fs.readFileSync(path.join(dirPath, validFileList[0]));
+
+  return savHandler.toStringifiedAsset(buffer, assetsFile);
+}
+
 export default {
   saveGameFolder,
 
   saveFile,
   listAllValidFiles,
   getContent,
+  getFromStaticContent,
 };

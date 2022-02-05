@@ -39,9 +39,21 @@ function listAllValidFiles(dirPath) {
     });
     return validFileList;
 }
+function getFromStaticContent(dirPath, assetsFile) {
+    var fileList = fs_1["default"].readdirSync(dirPath);
+    var validFileList = fileList.filter(function (fileName) {
+        return fileName.match(/[0-9]*-StaticContent\.sav/);
+    });
+    if (validFileList.length === 0) {
+        throw new Error("no staticContent file");
+    }
+    var buffer = fs_1["default"].readFileSync(path_1["default"].join(dirPath, validFileList[0]));
+    return savHandler_1["default"].toStringifiedAsset(buffer, assetsFile);
+}
 exports["default"] = {
     saveGameFolder: saveGameFolder,
     saveFile: saveFile,
     listAllValidFiles: listAllValidFiles,
-    getContent: getContent
+    getContent: getContent,
+    getFromStaticContent: getFromStaticContent
 };

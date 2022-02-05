@@ -63,7 +63,25 @@ function toBuffer(stringifiedJson: string): Buffer {
   return fileAsBuffer;
 }
 
+function toStringifiedAsset(buffer: Buffer, assetsFile: string): string {
+  const fileIndex = buffer.indexOf(assetsFile, 0, "utf-8");
+
+  const jumpToEndIndex = fileIndex + assetsFile.length + 1;
+
+  const jumpToEnd = calculateJumpToEnd(buffer, jumpToEndIndex);
+
+  const indexOfStartContent = jumpToEndIndex + 4;
+  const indexOfEndContent = indexOfStartContent + jumpToEnd - 1;
+
+  const content = buffer
+    .slice(indexOfStartContent, indexOfEndContent)
+    .toString("utf-8");
+
+  return content;
+}
+
 export default {
   toStringifiedJson,
   toBuffer,
+  toStringifiedAsset,
 };

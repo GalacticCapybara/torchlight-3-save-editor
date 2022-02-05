@@ -48,7 +48,19 @@ function toBuffer(stringifiedJson) {
     }
     return fileAsBuffer;
 }
+function toStringifiedAsset(buffer, assetsFile) {
+    var fileIndex = buffer.indexOf(assetsFile, 0, "utf-8");
+    var jumpToEndIndex = fileIndex + assetsFile.length + 1;
+    var jumpToEnd = calculateJumpToEnd(buffer, jumpToEndIndex);
+    var indexOfStartContent = jumpToEndIndex + 4;
+    var indexOfEndContent = indexOfStartContent + jumpToEnd - 1;
+    var content = buffer
+        .slice(indexOfStartContent, indexOfEndContent)
+        .toString("utf-8");
+    return content;
+}
 exports["default"] = {
     toStringifiedJson: toStringifiedJson,
-    toBuffer: toBuffer
+    toBuffer: toBuffer,
+    toStringifiedAsset: toStringifiedAsset
 };
